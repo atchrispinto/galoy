@@ -1,3 +1,5 @@
+import { getDisplayCurrency } from "@config"
+
 import { toSats } from "@domain/bitcoin"
 import { toCents } from "@domain/fiat"
 import { LedgerTransactionType } from "@domain/ledger"
@@ -59,7 +61,7 @@ export const send = {
       displayFee: centsFee as DisplayCurrencyBaseAmount,
       displayAmount: centsAmount as DisplayCurrencyBaseAmount,
 
-      displayCurrency: WalletCurrency.Usd,
+      displayCurrency: getDisplayCurrency().code,
       centsAmount: toCents(centsAmount),
       satsAmount: toSats(sats - feeRouting),
       centsFee: toCents(centsFee),
